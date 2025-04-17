@@ -1,0 +1,3 @@
+In error analysis (10Khz.png, 10Mhz.png, 1Mhz.png, 20Mhz.png, 24Mhz.png, 25Mhz.png, 65.5Mhz.png) the light blue (below) is clock and dark blue (above) is output. At about 10Mhz is when the signal becomes distorted dur to capacitance.
+
+In timing analysis (1.1.png, 2.1.png, 3.1.png, 4.1.png, 1.2.png, 2.2.png, 3.2.png, 4.2.png) the dark blue (below) is clock and light blue (above) is output. The reason there are 2 is because X.1.png measures delay during a rising clock and X.2.png measures delay during a falling clock.
