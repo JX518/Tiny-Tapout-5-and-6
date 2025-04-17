@@ -1,0 +1,42 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+
+# Load the data file
+file_path = "/home/xujus/Documents/ASU/489/newOsc/lowpowersystem1.txt"
+df = pd.read_csv(file_path, delim_whitespace=True)
+
+
+# Extract the current and time to arrays
+current = df['Ix(x4:vdd)'].to_numpy()
+time = df.iloc[:, 0].to_numpy()
+
+#Calculate integral of current
+current_integral = np.trapz(current, time)
+
+#Find average current and print it
+avg_current = current_integral / (2*10**-5)
+print(f"Average current (charge/seconds) = {avg_current}")
+print(f"In nanoamps = {avg_current * (10**9)} nA")
+print("")
+
+
+
+######## Below here is commented out average power calculation
+
+
+
+##Calculate power
+df['Power'] = df['V(n001)'] * df['Ix(x4:vdd)']
+power_values = df['Power'].to_numpy()
+
+##Compute time-weighted average power
+##Take integral of power and then divide by time (10us)
+average_power = np.trapz(power_values, time) / (10**-5)
+
+##Convert power to nano watts and print
+average_power_nanowatts = average_power * (10**9)
+print(f"Time-weighted Average Power in nanowatts: {average_power_nanowatts}")
+
